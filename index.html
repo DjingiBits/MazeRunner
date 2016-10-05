@@ -3,10 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Maze Runner</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!--FontAwesome-->
+    <link rel="stylesheet" href="./vendor/font-awesome-4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
 <body>
+<header>
+    <nav class="navbar navbar-inverse navbar-static-top navbar-static-top">
+        <div class="container-fluid ">
+            <div class="navbar-header ">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img class="logo-image" src="./assets/img/logo-transparent-white.png" alt="Brand logo"></a>
+            </div>
+
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav pull-left">
+                    <li class="active"><a href="#">Rules<span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav pull-right">
+                    <li><a href="https://github.com/DjingiBits/MazeRunner">View project on GitHub <i class="fa fa-github" aria-hidden="true"></i>
+                        </i></a></li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>
 <div>
     <canvas id="canvas" width="800" height="800">
         Your browser does not support HTML5 Canvas.
