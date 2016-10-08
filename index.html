@@ -9,9 +9,10 @@
     <!--FontAwesome-->
     <link rel="stylesheet" href="./vendor/font-awesome-4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
+<div class="wrapper">
 <header>
     <nav class="navbar navbar-inverse navbar-static-top navbar-static-top">
         <div class="container-fluid ">
@@ -41,11 +42,22 @@
         </div>
     </nav>
 </header>
-<div>
-    <canvas id="canvas" width="800" height="800">
-        Your browser does not support HTML5 Canvas.
-    </canvas>
+<div id="questions-container">
+    <h2 class="timer" id="countdown-counter">Game over</h2>
+    <h1>Question:</h1>
+    <h3 id="question-text"></h3>
+    <div class="form-group">
+        <input type="text" class="form-control" id="answer-input" placeholder="Enter answer">
+    </div>
+    <h4 id="result"></h4>
+    <button id="submitBtn" class="btn btn-default">Check</button>
+    <button id="hintBtn" class="btn btn-default">Get Answer (-300 points)</button>
 </div>
-
+</div>
+<script type='text/javascript' >
+    var score = 1000;
+</script>
+<script src="timer.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
