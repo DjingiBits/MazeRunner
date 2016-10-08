@@ -4,21 +4,15 @@ function generateObstacles(number, fromWidth, toWidth, fromHeight, toHeight) {
     obstacles.push(new Obstacle())
 
     for (let index = 0; index < number; index += 1) {
-        let x = getRandomNumber(fromWidth, toWidth),
-            y = getRandomNumber(fromWidth, toWidth);
+        let x = getRandomCoordinateValue(fromWidth, toWidth),
+            y = getRandomCoordinateValue(fromWidth, toWidth);
+
+        x = x > 800 / 2 ? x + 6 : x;
+        y = y > 800 / 2 ? y + 6 : y;
 
         let currentObstacle = new Obstacle(x, y);
         obstacles.push(currentObstacle);
     }
 
     return obstacles;
-
-    function getRandomNumber(min, max) {
-        let cellSize = Math.round(800 / 22);
-        let number = Math.floor(Math.random() * (max - min + 1)) + min;
-        let fullCellReminder = number % cellSize;
-        number += (cellSize - fullCellReminder);
-
-        return number;
-    }
 }

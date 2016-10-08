@@ -5,6 +5,7 @@ function Obstacle(x, y) {
     this.color = "red";
     this.x = x;
     this.y = y;
+    this.isVisible = false;
     this.lastSwitchSec = new Date().getSeconds();
     this.update = function () {
         let secondsNow = new Date().getSeconds();
@@ -21,6 +22,10 @@ function Obstacle(x, y) {
     };
 
     this.render = function (context) {
+        if (!this.isVisible) {
+            return;
+        }
+
         context.fillStyle = this.color;
         context.fillRect(this.x, this.y, this.width, this.height);
     }

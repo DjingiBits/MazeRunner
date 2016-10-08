@@ -10,7 +10,7 @@ window.visualizationModule = (function () {
     mazeImage.onload = function () {
       mazeReady = true
     }
-    mazeImage.src = '../assets/img/maze.gif'
+    mazeImage.src = '../MazeRunner/assets/img/maze.gif'
   }
 
   function renderMaze() {
@@ -23,7 +23,7 @@ window.visualizationModule = (function () {
     playerImage.onload = function () {
       playerReady = true;
     }
-    playerImage.src = '../assets/img/monster.png'
+    playerImage.src = '../MazeRunner/assets/img/monster.png'
   }
 
   function renderPlayer(x, y) {
