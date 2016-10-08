@@ -8,9 +8,10 @@ let gameEngine = (function () {
 
   function run() {
     obstacles.forEach(o => o.update());
-    visualizationModule.renderMaze()
-    visualizationModule.renderObstacels(obstacles)
-    requestAnimationFrame(run)
+    visualizationModule.renderMaze();
+    playerModule.drawPlayer();
+    visualizationModule.renderObstacels(obstacles);
+    requestAnimationFrame(run);
   }
 
   return {
@@ -19,6 +20,7 @@ let gameEngine = (function () {
 })();
 
 $(function () { 
-  visualizationModule.setMaze() 
+  visualizationModule.initImages();
+  playerModule.assignKeyHandlers();
   gameEngine.run();
 })
