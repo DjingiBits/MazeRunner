@@ -1,0 +1,22 @@
+{
+  "name": "maze-runner",
+  "version": "1.0.0",
+  "description": "js fundamentals team project",
+  "main": "gameEngine.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DjingiBits/MazeRunner.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DjingiBits/MazeRunner/issues"
+  },
+  "homepage": "https://github.com/DjingiBits/MazeRunner#readme",
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
+}
