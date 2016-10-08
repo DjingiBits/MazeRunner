@@ -10,20 +10,21 @@ window.visualizationModule = (function () {
     mazeImage.onload = function () {
       mazeReady = true
     }
-    mazeImage.src = '../MazeRunner/assets/img/maze.gif'
+    mazeImage.src = '../assets/img/maze.gif'
   }
 
   function renderMaze() {
-    if (mazeReady) {
-      context.drawImage(mazeImage, 0, 0, 800, 800)
-    }
+    mazeModule.drawMaze();
+    // if (mazeReady) {
+    //   context.drawImage(mazeImage, 0, 0, 800, 800)
+    // }
   }
 
   function setPlayerImage() {
     playerImage.onload = function () {
       playerReady = true;
     }
-    playerImage.src = '../MazeRunner/assets/img/monster.png'
+    playerImage.src = '../assets/img/monster.png'
   }
 
   function renderPlayer(x, y) {
@@ -32,19 +33,24 @@ window.visualizationModule = (function () {
     }
   }
 
-  function initImages() {
-    setMazeImage();
-    setPlayerImage();
+  function initImages() {    
+    // setMazeImage();
+    setPlayerImage();    
   }
 
   function renderObstacles(obstacles) {
     obstacles.forEach(o => o.render(context));
   }
 
+  function clearMaze () {
+    context.clearRect(0, 0, 800, 800);
+  }
+
   return {
     initImages: initImages,
     renderMaze: renderMaze,
     renderPlayer: renderPlayer,
-    renderObstacels: renderObstacles
+    renderObstacels: renderObstacles,
+    clearMaze: clearMaze
   }
 })();

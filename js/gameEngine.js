@@ -24,9 +24,11 @@ let gameEngine = (function () {
 
             lastTimeObstaclesChanged = secondsNow;
         }
+        visualizationModule.clearMaze();
 
         obstacles.forEach(o => o.update());
         visualizationModule.renderMaze();
+        
         playerModule.drawPlayer();
         visualizationModule.renderObstacels(obstacles);
         requestAnimationFrame(run);

@@ -1,6 +1,6 @@
 window.playerModule = (function () {
-  var positionX = 42;
-  var positionY = 42;
+  var positionX = 65;
+  var positionY = 65;
 
   function assignKeyHandlers() {
     $(document).keydown(function (e) {
@@ -33,19 +33,19 @@ window.playerModule = (function () {
   }
 
   function moveLeft() {
-    console.log('left')
+    positionX -= 50;
   }
 
   function moveRight() {
-    console.log('right')
+    positionX += 50;
   }
 
   function moveUp() {
-    console.log('up')
+    positionY -= 50;
   }
 
   function moveDown() {
-    console.log('down')
+    positionY += 50;
   }
 
   function drawPlayer() {
