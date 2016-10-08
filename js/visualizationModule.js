@@ -11,7 +11,7 @@ window.visualizationModule = (function () {
     mazeImage.onload = function () {
       bgReady = true
     }
-    mazeImage.src = '../assets/img/maze.gif'
+    mazeImage.src = '../MazeRunner/assets/img/maze.gif'
   }
 
   function renderMaze() { 
@@ -20,8 +20,13 @@ window.visualizationModule = (function () {
     }
   }
 
+  function renderObstacles(obstacles) {
+    obstacles.forEach(o => o.render(context));
+  }
+
   return {
     renderMaze: renderMaze,
-    setMaze: setMaze
+    setMaze: setMaze,
+    renderObstacels: renderObstacles
   }
 })();
