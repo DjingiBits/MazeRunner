@@ -3,12 +3,15 @@ let gameEngine = (function () {
         numberOfVisibleObstacles = 5,
         intervalObstaclesChange = 6,
         lastTimeObstaclesChanged = new Date().getSeconds(),
+        numberOfQuestions = 5,
         fromWidth = 50,
         toWidth = 700,
         fromHeight = 50,
         toHeight = 700,
         visibleIndexes = getVisibleObstaclesIndexes(numberOfVisibleObstacles, numberOfObstacles);
     let obstacles = generateObstacles(numberOfObstacles, fromWidth, toWidth, fromHeight, toHeight);
+    let questions = generateQuestions(numberOfQuestions, fromWidth, toWidth, fromHeight, toHeight);
+    
 
     function run() {
         let secondsNow = new Date().getSeconds();
@@ -30,6 +33,7 @@ let gameEngine = (function () {
         visualizationModule.renderMaze();        
         playerModule.drawPlayer();
         visualizationModule.renderObstacels(obstacles);
+        visualizationModule.renderQuestions(questions);
         requestAnimationFrame(run);
     }
 

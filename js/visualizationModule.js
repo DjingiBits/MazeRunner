@@ -1,8 +1,10 @@
 window.visualizationModule = (function () {
   let playerReady = false;
+  let questionReady = false;
   let canvas = document.getElementById('canvas');
   let context = canvas.getContext('2d');
   let playerImage = new Image();
+  let questionImage = new Image();
 
   function renderMaze() {
     mazeModule.drawMaze();
@@ -15,14 +17,30 @@ window.visualizationModule = (function () {
     playerImage.src = '../assets/img/monster.png'
   }
 
+  function setQuestionImage() {
+    questionImage.onload = function () {
+      questionReady = true;
+    }
+    questionImage.src = '../assets/img/diamond.png'
+  }
+
   function renderPlayer(x, y) {
     if (playerReady) {
       context.drawImage(playerImage, x, y, 25, 25);
     }
   }
 
+  function renderQuestions (questions) {
+    if (questionReady) {
+      for (let question of questions) {
+        context.drawImage(questionImage, question.x, question.y, 30, 30);
+      }      
+    }
+  }
+
   function initImages() {
-    setPlayerImage();    
+    setPlayerImage();
+    setQuestionImage(); 
   }
 
   function renderObstacles(obstacles) {
@@ -37,6 +55,7 @@ window.visualizationModule = (function () {
     initImages: initImages,
     renderMaze: renderMaze,
     renderPlayer: renderPlayer,
+    renderQuestions: renderQuestions,
     renderObstacels: renderObstacles,
     clearMaze: clearMaze
   }
