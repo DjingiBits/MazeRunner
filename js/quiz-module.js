@@ -31,7 +31,6 @@ let questionsDataBase=[{
 
 //Referencing
 let questionTitle = document.getElementById('question-text'),
-    answer = document.getElementById('answer-input').value.toString().toLowerCase().trim(),
     submitButton = document.getElementById('submitBtn'),
     hintButton = document.getElementById('hintBtn'),
     dbLength= questionsDataBase.length;
@@ -65,9 +64,10 @@ function populateQuestion(){
 function checkAnswer(){
 
     let correctAnswer = questionsDataBase[currIndex].correctAnswer,
-        populateResult = document.getElementById("result");
+        populateResult = document.getElementById("result"),
+        answer = document.getElementById('answer-input').value.toString().toLowerCase().trim();
 
-    if (answer !== correctAnswer.toLowerCase().trim()) {
+    if (answer === correctAnswer.toLowerCase().trim()) {
         populateResult.innerText = "Your answer is correct!";
         score += 100;
 
