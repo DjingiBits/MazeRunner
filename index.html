@@ -49,12 +49,30 @@
             </div>
         </nav>
     </header>
-    <div>
-        <canvas id="canvas" width="1400" height="800">
+    <div class="canvas-container pull-left">
+        <canvas id="canvas" width="800" height="800">
             Your browser does not support HTML5 Canvas.
         </canvas>
     </div>
 
+    <div id="questions-container" class="quiz-container pull-right">
+        <h2 class="timer" id="countdown-counter">Game over</h2>
+        <h1>Question:</h1>
+        <h3 id="question-text"></h3>
+        <div class="form-group">
+            <input type="text" class="form-control" id="answer-input" placeholder="Enter answer">
+        </div>
+        <h4 id="result"></h4>
+        <button id="submitBtn" class="btn btn-default">Check</button>
+        <button id="hintBtn" class="btn btn-default">Get Answer (-300 points)</button>
+    </div>
+
+    <script type='text/javascript' >
+        var score = 1000;
+    </script>
+
+    <script type="text/javascript" src="./js/timer.js"></script>
+    <script type="text/javascript" src="./js/quiz-module.js"></script>
     <script type="text/javascript" src="./js/utils.js"></script>
     <script type="text/javascript" src="./js/obstacle.js"></script>
     <script type="text/javascript" src="./js/obstacles-generator.js"></script>
