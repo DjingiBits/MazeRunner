@@ -14,19 +14,19 @@ window.visualizationModule = (function () {
     playerImage.onload = function () {
       playerReady = true;
     }
-    playerImage.src = '../assets/img/monster.png'
+    playerImage.src = '../MazeRunner/assets/img/monster.png'
   }
 
   function setQuestionImage() {
     questionImage.onload = function () {
       questionReady = true;
     }
-    questionImage.src = '../assets/img/diamond.png'
+    questionImage.src = '../MazeRunner/assets/img/diamond.png'
   }
 
-  function renderPlayer(x, y) {
+  function renderPlayer(x, y, width, height) {
     if (playerReady) {
-      context.drawImage(playerImage, x, y, 25, 25);
+      context.drawImage(playerImage, x, y, width, height);
     }
   }
 
@@ -57,6 +57,7 @@ window.visualizationModule = (function () {
     renderPlayer: renderPlayer,
     renderQuestions: renderQuestions,
     renderObstacels: renderObstacles,
-    clearMaze: clearMaze
+    clearMaze: clearMaze,
+    context: context
   }
 })();
