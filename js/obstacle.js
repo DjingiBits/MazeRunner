@@ -2,7 +2,7 @@ function Obstacle(x, y) {
     this.switchInterval = 2;
     this.width = 20;
     this.height = 50;
-    this.color = "red";
+    this.color = "#d43030";
     this.lineCap = "square";
     this.x = x;
     this.y = y;
