@@ -56,9 +56,23 @@
             <div id="particles-js"></div>
 
             <div class="container">
-                <a href="#">Here's a button</a>
+                <h1 class="title-welcome">Welcome to Maze Runner!</h1>
+                <ol class="rules">
+                    <li class="single-rule">To start the game: Press “Play Game”</li>
+                    <li class="single-rule">To move press the Up/Down/Left/Right arrow keys.</li>
+                    <li class="single-rule">You exit the maze, when all gems are collected.</li>
+                    <li class="single-rule">One correct answer equals one gem.</li>
+                    <li class="single-rule">If the provided answer is not correct, you lose 30points.</li>
+                    <li class="single-rule">If the provided answer is not correct, you can "buy" the gem for 300points</li>
+                    <li class="single-rule">For every correct answer you get +100points.</li>
+                    <li class="single-rule">If the points become 0 game is over.</li>
+                </ol>
+                <a id="scroll-link" href="#">Play Game</a>
             </div>
         </header>
+
+        <main>
+            <a name="play-game">
 
     <div class="canvas-container pull-left">
         <canvas id="canvas" width="800" height="800">
@@ -77,6 +91,7 @@
         <button id="submitBtn" class="btn btn-default">Check</button>
         <button id="hintBtn" class="btn btn-default">Get Answer (-300 points)</button>
     </div>
+            </a>
     </main>
     </main>
 
@@ -96,6 +111,8 @@
     <script type="text/javascript" src="./js/playerModule.js"></script>
     <script type="text/javascript" src="./js/gameEngine.js"></script>
     <script type="text/javascript" src="vendor/particles.js/particles.js"></script>
+    <script type="text/javascript" src="./js/appParticles.js"></script>
+
 
 </body>
 
