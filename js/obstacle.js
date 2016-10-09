@@ -1,8 +1,9 @@
 function Obstacle(x, y) {
     this.switchInterval = 2;
-    this.width = 5;
-    this.height = Math.round(800 / 22);
+    this.width = 20;
+    this.height = 50;
     this.color = "red";
+    this.lineCap = "square";
     this.x = x;
     this.y = y;
     this.isVisible = false;
@@ -12,13 +13,10 @@ function Obstacle(x, y) {
         let shouldSwitch = secondsNow % this.switchInterval === 0;
         if (shouldSwitch && secondsNow !== this.lastSwitchSec) {
             let oldWidth = this.width;
-
             this.width = this.height;
             this.height = oldWidth;
-
             this.lastSwitchSec = secondsNow;
         }
-
     };
 
     this.render = function (context) {
@@ -27,6 +25,7 @@ function Obstacle(x, y) {
         }
 
         context.fillStyle = this.color;
+        context.lineCap = this.lineCap;
         context.fillRect(this.x, this.y, this.width, this.height);
     }
 }

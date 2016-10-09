@@ -1,23 +1,11 @@
 window.visualizationModule = (function () {
-  let mazeReady = false;
   let playerReady = false;
   let canvas = document.getElementById('canvas');
   let context = canvas.getContext('2d');
-  let mazeImage = new Image();
   let playerImage = new Image();
-
-  function setMazeImage() {    
-    mazeImage.onload = function () {
-      mazeReady = true
-    }
-    mazeImage.src = '../assets/img/maze.gif'
-  }
 
   function renderMaze() {
     mazeModule.drawMaze();
-    // if (mazeReady) {
-    //   context.drawImage(mazeImage, 0, 0, 800, 800)
-    // }
   }
 
   function setPlayerImage() {
@@ -33,8 +21,7 @@ window.visualizationModule = (function () {
     }
   }
 
-  function initImages() {    
-    // setMazeImage();
+  function initImages() {
     setPlayerImage();    
   }
 

@@ -27,8 +27,7 @@ let gameEngine = (function () {
         visualizationModule.clearMaze();
 
         obstacles.forEach(o => o.update());
-        visualizationModule.renderMaze();
-        
+        visualizationModule.renderMaze();        
         playerModule.drawPlayer();
         visualizationModule.renderObstacels(obstacles);
         requestAnimationFrame(run);
