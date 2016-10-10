@@ -50,6 +50,7 @@ window.quizModule = (function () {
 
         if (answer === correctAnswer.toLowerCase().trim()) {
             populateResult.innerText = "Your answer is correct!";
+            populateResult.style.color="#A5DC86";
             score += 100;
 
             correctAnswersCount += 1;
@@ -60,6 +61,7 @@ window.quizModule = (function () {
             playerModule.setShouldFreeze(false);
         } else {
             populateResult.innerText = "Your answer is incorrect!";
+            populateResult.style.color="#f06e57";
             score -= 30;
             setTimeout(populateQuestion, 2000);
         }
