@@ -20,7 +20,7 @@ id = setInterval(function() {
         swal(
             {   title: "Game Over!",
                 text: "Next time be faster",
-                imageUrl: "../MazeRunner/assets/img/game-over.png" ,
+                imageUrl: "../assets/img/game-over.png" ,
                 showCancelButton: true,
                 cancelButtonText: "Cancel",
                 confirmButtonColor: "#DD6B55",

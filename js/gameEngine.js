@@ -3,7 +3,7 @@ let gameEngine = (function () {
         visibleIndexes = obstaclesModule.getVisibleObstaclesIndexes(VISIBLE_OBSTACLES_COUNT, TOTAL_OBSTACLES_COUNT);
     let obstacles = obstaclesModule.generateObstacles(TOTAL_OBSTACLES_COUNT, MAZE_START_COORDS, MAZE_END_COORDS);
     let questions = generateQuestions(TOTAL_QUESTIONS_COUNT, MAZE_START_COORDS, MAZE_END_COORDS);
-    
+
     function run() {
         updateObstacles();
         updateQuestions();
@@ -14,6 +14,8 @@ let gameEngine = (function () {
         playerModule.drawPlayer();
         visualizationModule.renderObstacels(obstacles);
         visualizationModule.renderQuestions(questions);
+
+        checkForWinning();
 
         requestAnimationFrame(run);
     }
@@ -39,6 +41,27 @@ let gameEngine = (function () {
         obstacles.forEach(o => o.update());
     }
 
+    function checkForWinning() {
+        if (quizModule.getCorrectAnswersCount() >= 5) {
+            swal(
+                {
+                    title: "You win!",
+                    text: "Your score: " + (score - 100),
+                    imageUrl: "../assets/img/congratulations.jpg",
+                    showCancelButton: true,
+                    cancelButtonText: "Cancel",
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Play again"
+                }, function (isConfirm) {
+                    if (isConfirm) {
+                        location.reload();
+                    }
+                });
+
+            clearInterval(id);
+        }
+    }
+
     function updateQuestions() {
         let indexToRemove = -1;
         for (let i = 0; i < questions.length; i += 1) {
@@ -55,22 +78,7 @@ let gameEngine = (function () {
             playerModule.setShouldFreeze(true);
             quizModule.populateQuestion();
         }
-        if(questions.length == 0){
-            swal(
-                {   title: "You win!",
-                    text: "Your score: ",
-                    imageUrl: "../MazeRunner/assets/img/congratulations.jpg" ,
-                    showCancelButton: true,
-                    cancelButtonText: "Cancel",
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "Play again"
-                }, function(isConfirm)
-                {
-                    if(isConfirm) {
-                        location.reload();
-                    }
-                });
-        }
+
     }
 
     function switchObstaclesAtIndexes(indexes) {

@@ -5,7 +5,7 @@ window.quizModule = (function () {
         new Question('In computing what is Ram short for?', 'Random Access Memory', 2),
         new Question('Which South American country is named after Venice?', 'Venezuela', 3),
         new Question('What is both a French wine region and a luxury American automobile?', 'Cadillac', 4)
-    ];
+    ];    
 
     //Referencing
     let questionContent = document.getElementById('question-text'),
@@ -14,6 +14,7 @@ window.quizModule = (function () {
         populateResult = document.getElementById("result"),
         inputTextBox = document.getElementById('answer-input');
 
+    var correctAnswersCount = 0;
     var currentQuestionIndex = 0;
 
     //Rand question generator
@@ -51,6 +52,7 @@ window.quizModule = (function () {
             populateResult.innerText = "Your answer is correct!";
             score += 100;
 
+            correctAnswersCount += 1;
             questionsDataBase.splice(currentQuestionIndex, 1); // deleting asnwered question
             submitButton.style.visibility = "hidden";
             hintButton.style.visibility = "hidden";
@@ -59,15 +61,20 @@ window.quizModule = (function () {
         } else {
             populateResult.innerText = "Your answer is incorrect!";
             score -= 30;
+            setTimeout(populateQuestion, 2000);
         }
     }
 
     function answerPenalty() {
         let correctAnswer = questionsDataBase[currentQuestionIndex].answer,
             populatePenaltyResult = document.getElementById("result");
-        score -= 990;
+        score -= 300;
         populatePenaltyResult.innerText = correctAnswer;
         hintButton.style.visibility = "hidden";
+    }
+
+    function getCorrectAnswersCount() {
+        return correctAnswersCount;
     }
 
 
@@ -86,6 +93,7 @@ window.quizModule = (function () {
     };
 
     return {
-        populateQuestion: populateQuestion
+        populateQuestion: populateQuestion,
+        getCorrectAnswersCount: getCorrectAnswersCount
     }
 })();
