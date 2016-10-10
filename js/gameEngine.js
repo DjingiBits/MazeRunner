@@ -14,7 +14,8 @@ let gameEngine = (function () {
         playerModule.drawPlayer();
         visualizationModule.renderObstacels(obstacles);
         visualizationModule.renderQuestions(questions);
-
+        checkForWinning();
+        
         requestAnimationFrame(run);
     }
 
@@ -38,7 +39,11 @@ let gameEngine = (function () {
 
         obstacles.forEach(o => o.update());
     }
-
+    function checkForWinning() {
+        if (quizModule.getCorrectAnswersCount() >= 5) {
+           youWinNotification();
+        }
+    }
     function updateQuestions() {
         let indexToRemove = -1;
         for (let i = 0; i < questions.length; i += 1) {
@@ -54,22 +59,6 @@ let gameEngine = (function () {
             questions.splice(indexToRemove, 1);
             playerModule.setShouldFreeze(true);
             quizModule.populateQuestion();
-        }
-        if(questions.length == 0){
-            swal(
-                {   title: "You win!",
-                    text: "Your score: ",
-                    imageUrl: "../MazeRunner/assets/img/congratulations.jpg" ,
-                    showCancelButton: true,
-                    cancelButtonText: "Cancel",
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "Play again"
-                }, function(isConfirm)
-                {
-                    if(isConfirm) {
-                        location.reload();
-                    }
-                });
         }
     }
 

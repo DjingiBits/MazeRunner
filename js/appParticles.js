@@ -7,4 +7,5 @@ function scrollToAnchor(aid){
 
 $("#scroll-link").click(function() {
     scrollToAnchor('play-game');
+    getPlayerName();
 });

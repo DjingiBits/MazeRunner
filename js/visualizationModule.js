@@ -34,13 +34,13 @@ window.visualizationModule = (function () {
     if (questionReady) {
       for (let question of questions) {
         context.drawImage(questionImage, question.x, question.y, 30, 30);
-      }      
+      }
     }
   }
 
   function initImages() {
     setPlayerImage();
-    setQuestionImage(); 
+    setQuestionImage();
   }
 
   function renderObstacles(obstacles) {

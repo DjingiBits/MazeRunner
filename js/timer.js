@@ -17,20 +17,7 @@ id = setInterval(function() {
     if(score < 0) {
         newElement.parentNode.replaceChild(countdownTracker, newElement);
         clearInterval(id);
-        swal(
-            {   title: "Game Over!",
-                text: "Next time be faster",
-                imageUrl: "../MazeRunner/assets/img/game-over.png" ,
-                showCancelButton: true,
-                cancelButtonText: "Cancel",
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Play again"
-            }, function(isConfirm)
-            {
-                if(isConfirm) {
-                   location.reload();
-                }
-            });
+        gameOverNotification();
 
     } else {
         newElement.innerHTML = "Score: " + score.toString();
