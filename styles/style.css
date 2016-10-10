@@ -74,3 +74,10 @@
     outline-color: transparent;
     outline-style: none;
 }
+.question-picture{
+    padding: inherit;
+    width: 400px;
+    height: 550px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}

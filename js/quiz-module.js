@@ -19,6 +19,7 @@ window.quizModule = (function () {
     //Rand question generator
     function getRandomQuestion() {
         let questionId = getRandomNumber(0, questionsDataBase.length - 1);
+        document.getElementById("question-picture").style.backgroundImage = `url("assets/img/${questionId}.jpg`;
         currentQuestionIndex = questionId;
         return questionsDataBase[questionId];
     }
@@ -64,7 +65,7 @@ window.quizModule = (function () {
     function answerPenalty() {
         let correctAnswer = questionsDataBase[currentQuestionIndex].answer,
             populatePenaltyResult = document.getElementById("result");
-        score -= 300;
+        score -= 990;
         populatePenaltyResult.innerText = correctAnswer;
         hintButton.style.visibility = "hidden";
     }

@@ -9,8 +9,6 @@ window.mazeModule = (function () {
     context.moveTo(400, 50);
     context.lineTo(50, 50);
     context.lineTo(50, 750);
-    context.lineTo(400, 750);
-    context.moveTo(450, 750);
     context.lineTo(750, 750);
     context.lineTo(750, 50);
     context.lineTo(400, 50);

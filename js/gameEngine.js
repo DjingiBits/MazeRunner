@@ -3,7 +3,7 @@ let gameEngine = (function () {
         visibleIndexes = obstaclesModule.getVisibleObstaclesIndexes(VISIBLE_OBSTACLES_COUNT, TOTAL_OBSTACLES_COUNT);
     let obstacles = obstaclesModule.generateObstacles(TOTAL_OBSTACLES_COUNT, MAZE_START_COORDS, MAZE_END_COORDS);
     let questions = generateQuestions(TOTAL_QUESTIONS_COUNT, MAZE_START_COORDS, MAZE_END_COORDS);
-
+    
     function run() {
         updateObstacles();
         updateQuestions();
@@ -54,6 +54,22 @@ let gameEngine = (function () {
             questions.splice(indexToRemove, 1);
             playerModule.setShouldFreeze(true);
             quizModule.populateQuestion();
+        }
+        if(questions.length == 0){
+            swal(
+                {   title: "You win!",
+                    text: "Your score: ",
+                    imageUrl: "../MazeRunner/assets/img/congratulations.jpg" ,
+                    showCancelButton: true,
+                    cancelButtonText: "Cancel",
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Play again"
+                }, function(isConfirm)
+                {
+                    if(isConfirm) {
+                        location.reload();
+                    }
+                });
         }
     }
 

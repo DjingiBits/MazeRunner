@@ -13,7 +13,8 @@
     <!--FontAwesome-->
     <link rel="stylesheet" href="./vendor/font-awesome-4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="./styles/style.css">
-    <link rel="icon" href="./assets/img/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./styles/sweetalert.css">
+    <link rel="icon" href="assets/img/favicon.png" type="image/x-icon" />
     
     
    
@@ -79,7 +80,7 @@
             Your browser does not support HTML5 Canvas.
         </canvas>
     </div>
-
+  <div id = "dynamic">
     <div id="questions-container" class="quiz-container pull-right">
         <h2 class="timer" id="countdown-counter">Game over</h2>
         <h1>Question:</h1>
@@ -90,7 +91,11 @@
         <h4 id="result"></h4>
         <button id="submitBtn" class="btn btn-default">Check</button>
         <button id="hintBtn" class="btn btn-default">Get Answer (-300 points)</button>
+
+        <div id="question-picture" class="question-picture pull-right">
+        </div>
     </div>
+      </div>
             </a>
     </main>
     </main>
@@ -114,6 +119,8 @@
     <script type="text/javascript" src="./js/gameEngine.js"></script>
     <script type="text/javascript" src="vendor/particles.js/particles.js"></script>
     <script type="text/javascript" src="./js/appParticles.js"></script>
+    <script type="text/javascript" src="./js/sweetalert.min.js"></script>
+
 
 
 </body>
