@@ -1,13 +1,18 @@
 window.playerModule = (function () {
-  var positionX = 65;
-  var positionY = 65;
-  var speed = 25;
+  let positionX = 65;
+  let positionY = 65;
+  let speed = 25;
+  let questionIsActive = false;
 
-  var playerWidth = 25;
-  var playerHeight = 25;
+  let playerWidth = 25;
+  let playerHeight = 25;
 
   function assignKeyHandlers() {
     $(document).keydown(function (e) {
+      if (questionIsActive) {
+        return;
+      }
+
       let collisionDetected = false;
 
       switch (e.which) {
@@ -69,6 +74,8 @@ window.playerModule = (function () {
 
   return {
     assignKeyHandlers: assignKeyHandlers,
-    drawPlayer: drawPlayer
-  };
+    drawPlayer: drawPlayer,
+    x: function() { return positionX; },
+    y: function() { return positionY; },
+    setQuestionIsActive: function(value) { questionIsActive = value; }  };
 })();

@@ -70,7 +70,7 @@ function checkAnswer(){
     if (answer === correctAnswer.toLowerCase().trim()) {
         populateResult.innerText = "Your answer is correct!";
         score += 100;
-
+        playerModule.setQuestionIsActive(false);
     } else {
         populateResult.innerText = "Your answer is incorrect!";
         score -= 30;
@@ -82,6 +82,7 @@ function answerPenalty(){
         populatePenaltyResult = document.getElementById("result");
     score -= 300;
     populatePenaltyResult.innerText = correctAnswer;
+    playerModule.setQuestionIsActive(false);
 }
 
 
