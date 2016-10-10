@@ -97,3 +97,42 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+.btn{
+    font: 20px 'Open Sans', sans-serif;
+    border:2px dotted;
+    border-radius: 40px;
+    padding:10px;
+
+}
+
+.submit{
+    color: #A5DC86;
+    border-color: #A5DC86;
+    margin-right: 15px;
+    padding: 10px 25px;
+}
+
+.submit:hover{
+    background: #A5DC86;
+    border: 2px solid #A5DC86;
+    color:white;
+}
+
+.hint{
+   color: #f06e57;
+    border-color: #f06e57;
+}
+
+.hint:hover{
+    background:#f06e57;
+    border: 2px solid #f06e57;
+    color:white;
+
+}
+
+#result{
+    font: 24px "Open Sans", sans-serif;
+    font-weight: 900;
+    color: black;
+}

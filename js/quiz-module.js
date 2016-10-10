@@ -53,7 +53,7 @@ window.quizModule = (function () {
             score += 100;
 
             correctAnswersCount += 1;
-            questionsDataBase.splice(currentQuestionIndex, 1); // deleting asnwered question
+            questionsDataBase.splice(currentQuestionIndex, 1); // deleting answered question
             submitButton.style.visibility = "hidden";
             hintButton.style.visibility = "hidden";
 
