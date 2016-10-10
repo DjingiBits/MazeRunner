@@ -21,7 +21,6 @@ function getPlayerName() {
                 confirmButtonText: "Let's play",
                 confirmButtonColor: "#DD6B55"
             });
-            allPlayers.push(inputValue);
         });
 
 }
@@ -39,6 +38,8 @@ function gameOverNotification() {
                 location.reload();
             }
         });
+    var audioLoss = new Audio('../MazeRunner/assets/win.mp3');
+    audioLoss.play();
 }
 function youWinNotification() {
     swal(
@@ -55,6 +56,8 @@ function youWinNotification() {
                 location.reload();
             }
         });
+    var audioWin = new Audio('../MazeRunner/assets/win.mp3');
+    audioWin.play();
 
     clearInterval(id);
 }

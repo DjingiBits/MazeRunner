@@ -14,14 +14,7 @@ let gameEngine = (function () {
         playerModule.drawPlayer();
         visualizationModule.renderObstacels(obstacles);
         visualizationModule.renderQuestions(questions);
-<<<<<<< HEAD
         checkForWinning();
-        
-=======
-
-        checkForWinning();
-
->>>>>>> e17098b773589891077b0ded2ee56d9e4dac9c41
         requestAnimationFrame(run);
     }
 
@@ -45,13 +38,12 @@ let gameEngine = (function () {
 
         obstacles.forEach(o => o.update());
     }
-<<<<<<< HEAD
+
     function checkForWinning() {
         if (quizModule.getCorrectAnswersCount() >= 5) {
            youWinNotification();
         }
     }
-=======
 
     function checkForWinning() {
         if (quizModule.getCorrectAnswersCount() >= 5) {
@@ -74,7 +66,6 @@ let gameEngine = (function () {
         }
     }
 
->>>>>>> e17098b773589891077b0ded2ee56d9e4dac9c41
     function updateQuestions() {
         let indexToRemove = -1;
         for (let i = 0; i < questions.length; i += 1) {
@@ -91,10 +82,6 @@ let gameEngine = (function () {
             playerModule.setShouldFreeze(true);
             quizModule.populateQuestion();
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> e17098b773589891077b0ded2ee56d9e4dac9c41
     }
 
     function switchObstaclesAtIndexes(indexes) {

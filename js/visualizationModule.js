@@ -14,14 +14,14 @@ window.visualizationModule = (function () {
     playerImage.onload = function () {
       playerReady = true;
     }
-    playerImage.src = '../assets/img/monster.png'
+    playerImage.src = '../MazeRunner/assets/img/monster.png'
   }
 
   function setQuestionImage() {
     questionImage.onload = function () {
       questionReady = true;
     }
-    questionImage.src = '../assets/img/diamond.png'
+    questionImage.src = '../MazeRunner/assets/img/diamond.png'
   }
 
   function renderPlayer(x, y, width, height) {
