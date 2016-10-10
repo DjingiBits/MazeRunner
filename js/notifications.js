@@ -46,7 +46,7 @@ function youWinNotification() {
         {
             title: "You win!",
             text: "Your score: " + (score - 100),
-            imageUrl: "../MazeRunner/assets/img/congratulations.jpg",
+            imageUrl: "../MazeRunner/assets/img/win.jpg",
             showCancelButton: true,
             cancelButtonText: "Cancel",
             confirmButtonColor: "#DD6B55",

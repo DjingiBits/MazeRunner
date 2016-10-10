@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="./vendor/font-awesome-4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/sweetalert.css">
-    <link rel="stylesheet" href="./styles/input.css">
     <link rel="icon" href="assets/img/favicon.png" type="image/x-icon" />
     
     
@@ -88,16 +87,9 @@
         <div id="question-picture" class="question-picture pull-right">
         </div>
         <h3 id="question-text"></h3>
-
         <div class="form-group">
-            <span class="input input--jiro">
-                        <input class="input__field input__field--jiro" type="text" id="answer-input" />
-                        <label class="input__label input__label--jiro" for="answer-input">
-                            <span class="input__label-content input__label-content--jiro">Enter answer</span>
-                        </label>
-                    </span>
+            <input type="text" class="form-control" id="answer-input" placeholder="Enter answer">
         </div>
-
         <h4 id="result"></h4>
         <button id="submitBtn" class="btn btn-default submit">Check</button>
         <button id="hintBtn" class="btn btn-default hint">Get Answer (-300 points)</button>
