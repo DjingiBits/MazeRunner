@@ -5,7 +5,7 @@ window.quizModule = (function () {
         new Question('In computing what is Ram short for?', 'Random Access Memory', 2),
         new Question('Which South American country is named after Venice?', 'Venezuela', 3),
         new Question('What is both a French wine region and a luxury American automobile?', 'Cadillac', 4)
-    ];
+    ];    
 
     //Referencing
     let questionContent = document.getElementById('question-text'),

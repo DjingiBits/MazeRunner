@@ -17,7 +17,24 @@ id = setInterval(function() {
     if(score < 0) {
         newElement.parentNode.replaceChild(countdownTracker, newElement);
         clearInterval(id);
+<<<<<<< HEAD
         gameOverNotification();
+=======
+        swal(
+            {   title: "Game Over!",
+                text: "Next time be faster",
+                imageUrl: "../assets/img/game-over.png" ,
+                showCancelButton: true,
+                cancelButtonText: "Cancel",
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Play again"
+            }, function(isConfirm)
+            {
+                if(isConfirm) {
+                   location.reload();
+                }
+            });
+>>>>>>> e17098b773589891077b0ded2ee56d9e4dac9c41
 
     } else {
         newElement.innerHTML = "Score: " + score.toString();

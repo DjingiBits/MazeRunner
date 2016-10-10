@@ -3,7 +3,7 @@ let gameEngine = (function () {
         visibleIndexes = obstaclesModule.getVisibleObstaclesIndexes(VISIBLE_OBSTACLES_COUNT, TOTAL_OBSTACLES_COUNT);
     let obstacles = obstaclesModule.generateObstacles(TOTAL_OBSTACLES_COUNT, MAZE_START_COORDS, MAZE_END_COORDS);
     let questions = generateQuestions(TOTAL_QUESTIONS_COUNT, MAZE_START_COORDS, MAZE_END_COORDS);
-    
+
     function run() {
         updateObstacles();
         updateQuestions();
@@ -14,8 +14,14 @@ let gameEngine = (function () {
         playerModule.drawPlayer();
         visualizationModule.renderObstacels(obstacles);
         visualizationModule.renderQuestions(questions);
+<<<<<<< HEAD
         checkForWinning();
         
+=======
+
+        checkForWinning();
+
+>>>>>>> e17098b773589891077b0ded2ee56d9e4dac9c41
         requestAnimationFrame(run);
     }
 
@@ -39,11 +45,36 @@ let gameEngine = (function () {
 
         obstacles.forEach(o => o.update());
     }
+<<<<<<< HEAD
     function checkForWinning() {
         if (quizModule.getCorrectAnswersCount() >= 5) {
            youWinNotification();
         }
     }
+=======
+
+    function checkForWinning() {
+        if (quizModule.getCorrectAnswersCount() >= 5) {
+            swal(
+                {
+                    title: "You win!",
+                    text: "Your score: " + (score - 100),
+                    imageUrl: "../assets/img/congratulations.jpg",
+                    showCancelButton: true,
+                    cancelButtonText: "Cancel",
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Play again"
+                }, function (isConfirm) {
+                    if (isConfirm) {
+                        location.reload();
+                    }
+                });
+
+            clearInterval(id);
+        }
+    }
+
+>>>>>>> e17098b773589891077b0ded2ee56d9e4dac9c41
     function updateQuestions() {
         let indexToRemove = -1;
         for (let i = 0; i < questions.length; i += 1) {
@@ -60,6 +91,10 @@ let gameEngine = (function () {
             playerModule.setShouldFreeze(true);
             quizModule.populateQuestion();
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e17098b773589891077b0ded2ee56d9e4dac9c41
     }
 
     function switchObstaclesAtIndexes(indexes) {
