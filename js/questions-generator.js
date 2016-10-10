@@ -1,4 +1,4 @@
-function generateQuestions(number, fromWidth, toWidth, fromHeight, toHeight) {
+function generateQuestions(number, fromWidth, toWidth) {
   let questions = [];
 
   for (let index = 0; index < number; index += 1) {

@@ -1,55 +1,42 @@
 let gameEngine = (function () {
-    let numberOfObstacles = 30,
-        numberOfVisibleObstacles = 5,
-        intervalObstaclesChange = 6,
-        lastTimeObstaclesChanged = new Date().getSeconds(),
-        numberOfQuestions = 5,
-        fromWidth = 50,
-        toWidth = 700,
-        fromHeight = 50,
-        toHeight = 700,
-        visibleIndexes = getVisibleObstaclesIndexes(numberOfVisibleObstacles, numberOfObstacles);
-    let obstacles = generateObstacles(numberOfObstacles, fromWidth, toWidth, fromHeight, toHeight);
-    let questions = generateQuestions(numberOfQuestions, fromWidth, toWidth, fromHeight, toHeight);
-
+    let lastTimeObstaclesSwitched = new Date().getSeconds(),
+        visibleIndexes = obstaclesModule.getVisibleObstaclesIndexes(VISIBLE_OBSTACLES_COUNT, TOTAL_OBSTACLES_COUNT);
+    let obstacles = obstaclesModule.generateObstacles(TOTAL_OBSTACLES_COUNT, MAZE_START_COORDS, MAZE_END_COORDS);
+    let questions = generateQuestions(TOTAL_QUESTIONS_COUNT, MAZE_START_COORDS, MAZE_END_COORDS);
 
     function run() {
-        let secondsNow = new Date().getSeconds();
-        let isSwitchTime =
-            secondsNow % intervalObstaclesChange === 0 &&
-            secondsNow !== lastTimeObstaclesChanged;
-        if (isSwitchTime) {
-            // turn off current active obstacles
-            switchObstaclesAtIndexes(visibleIndexes);
-
-            visibleIndexes = getVisibleObstaclesIndexes(numberOfVisibleObstacles, numberOfObstacles);
-
-            // turn on current active obstacles
-            switchObstaclesAtIndexes(visibleIndexes);
-
-            lastTimeObstaclesChanged = secondsNow;
-        }
-
+        updateObstacles();
         updateQuestions();
 
         visualizationModule.clearMaze();
 
-        obstacles.forEach(o => o.update());
         visualizationModule.renderMaze();
         playerModule.drawPlayer();
         visualizationModule.renderObstacels(obstacles);
         visualizationModule.renderQuestions(questions);
+
         requestAnimationFrame(run);
     }
 
-    function getVisibleObstaclesIndexes(count, totalObstacles) {
-        let indexes = [];
-        for (let i = 0; i < count; i += 1) {
-            let randomIndex = getRandomNumber(0, totalObstacles - 1);
-            indexes.push(randomIndex);
+    function updateObstacles() {
+        let secondsNow = new Date().getSeconds();
+        let isSwitchTime =
+            secondsNow % INTERVAL_SWITCH_ACTIVE_OBSTACLES === 0 &&
+            secondsNow !== lastTimeObstaclesSwitched;
+        if (isSwitchTime) {
+            // turn off current active obstacles
+            switchObstaclesAtIndexes(visibleIndexes);
+
+            visibleIndexes = obstaclesModule
+                .getVisibleObstaclesIndexes(VISIBLE_OBSTACLES_COUNT, TOTAL_OBSTACLES_COUNT);
+
+            // turn on current active obstacles
+            switchObstaclesAtIndexes(visibleIndexes);
+
+            lastTimeObstaclesSwitched = secondsNow;
         }
 
-        return indexes;
+        obstacles.forEach(o => o.update());
     }
 
     function updateQuestions() {
