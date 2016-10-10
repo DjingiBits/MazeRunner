@@ -2,14 +2,14 @@ window.playerModule = (function () {
   let positionX = 65;
   let positionY = 65;
   let speed = 25;
-  let questionIsActive = false;
+  let shouldFreeze = false;
 
   let playerWidth = 25;
   let playerHeight = 25;
 
   function assignKeyHandlers() {
     $(document).keydown(function (e) {
-      if (questionIsActive) {
+      if (shouldFreeze || score <= 0) {
         return;
       }
 
@@ -77,5 +77,5 @@ window.playerModule = (function () {
     drawPlayer: drawPlayer,
     x: function() { return positionX; },
     y: function() { return positionY; },
-    setQuestionIsActive: function(value) { questionIsActive = value; }  };
+    setShouldFreeze: function(value) { shouldFreeze = value; }  };
 })();

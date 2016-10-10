@@ -1,3 +1,5 @@
-/**
- * Created by Iliyan on 10.10.2016 г..
- */
+function Question(content, answer, id) {
+    this.content = content;
+    this.answer = answer;
+    this.number = Number(id);
+}

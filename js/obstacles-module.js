@@ -1,13 +1,14 @@
 window.obstaclesModule = (function () {
 
     function generateObstacles(number, fromWidth, toWidth) {
-        let obstacles = [];
+        let obstacles = [],
+            positionOffset = 10;
 
-        obstacles.push(new Obstacle())
+        obstacles.push(new Obstacle());
 
         for (let index = 0; index < number; index += 1) {
-            let x = getRandomCoordinateValue(fromWidth, toWidth) - 10,
-                y = getRandomCoordinateValue(fromWidth, toWidth) - 10;
+            let x = getRandomCoordinateValue(fromWidth, toWidth) - positionOffset,
+                y = getRandomCoordinateValue(fromWidth, toWidth) - positionOffset;
 
             let currentObstacle = new Obstacle(x, y);
             obstacles.push(currentObstacle);

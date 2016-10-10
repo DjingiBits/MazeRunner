@@ -1,101 +1,90 @@
-let questionsDataBase=[{
-    question: 'Who invented Ferrari??',
-    correctAnswer: 'Enzo Ferrari',
-    number: 0
-},
+window.quizModule = (function () {
+    let questionsDataBase = [
+        new Question('Who invented Ferrari??', 'Enzo Ferrari', 0),
+        new Question('What is the largest number of five digits?', '99999', 1),
+        new Question('In computing what is Ram short for?', 'Random Access Memory', 2),
+        new Question('Which South American country is named after Venice?', 'Venezuela', 3),
+        new Question('What is both a French wine region and a luxury American automobile?', 'Cadillac', 4)
+    ];
 
-    {
-        question:'What is the largest number of five digits?',
-        correctAnswer: '99999',
-        number: 1
-    },
-
-    {
-        question: 'In computing what is Ram short for?',
-        correctAnswer: 'Random Access Memory',
-        number: 2
-    },
-
-    {
-        question: 'Which South American country is named after Venice?',
-        correctAnswer: 'Venezuela',
-        number: 3
-    },
-
-    {
-        question: 'What is both a French wine region and a luxury American automobile?',
-        correctAnswer: 'Cadillac',
-        number: 4
-    }];
-
-
-//Referencing
-let questionTitle = document.getElementById('question-text'),
-    submitButton = document.getElementById('submitBtn'),
-    hintButton = document.getElementById('hintBtn'),
-    dbLength= questionsDataBase.length;
-
-
-//Rand number generator
-function getRandomIndex(){
-    rndIndex = Math.floor((Math.random() * dbLength - 1)+1);
-    i = rndIndex;
-    return rndIndex;
-}
-
-var currIndex = 0;
-
-//Rand question generator
-function getRandomQuestion() {
-    let questionId = getRandomIndex();
-    currIndex = questionId;
-    return questionsDataBase [questionId];
-}
-
-
-//Populate current question
-function populateQuestion(){
-    let currentQuestion = getRandomQuestion();
-    questionTitle.innerText = currentQuestion.question;
-}
-
-
-//Check answer
-function checkAnswer(){
-
-    let correctAnswer = questionsDataBase[currIndex].correctAnswer,
+    //Referencing
+    let questionContent = document.getElementById('question-text'),
+        submitButton = document.getElementById('submitBtn'),
+        hintButton = document.getElementById('hintBtn'),
         populateResult = document.getElementById("result"),
-        answer = document.getElementById('answer-input').value.toString().toLowerCase().trim();
+        inputTextBox = document.getElementById('answer-input');
 
-    if (answer === correctAnswer.toLowerCase().trim()) {
-        populateResult.innerText = "Your answer is correct!";
-        score += 100;
-        playerModule.setQuestionIsActive(false);
-    } else {
-        populateResult.innerText = "Your answer is incorrect!";
-        score -= 30;
+    var currentQuestionIndex = 0;
+
+    //Rand question generator
+    function getRandomQuestion() {
+        let questionId = getRandomNumber(0, questionsDataBase.length - 1);
+        currentQuestionIndex = questionId;
+        return questionsDataBase[questionId];
     }
-}
 
-function answerPenalty(){
-    let correctAnswer = questionsDataBase[currIndex].correctAnswer,
-        populatePenaltyResult = document.getElementById("result");
-    score -= 300;
-    populatePenaltyResult.innerText = correctAnswer;
-    playerModule.setQuestionIsActive(false);
-}
+    //Populate current question
+    function populateQuestion() {
+        let currentQuestion = getRandomQuestion();
+        questionContent.innerText = currentQuestion.content;
+        submitButton.style.visibility = "visible";
+        hintButton.style.visibility = "visible";
+        populateResult.innerText = "";
+        inputTextBox.value = "";
+        inputTextBox.style.visibility = "visible";
+    }
+
+    //Check answer
+    function checkAnswer() {
+        let gameIsOver = score <= 0;
+        if (gameIsOver) {
+            submitButton.style.visibility = "hidden";
+            playerModule.setShouldFreeze(true);
+            return;
+        }
+
+        let correctAnswer = questionsDataBase[currentQuestionIndex].answer,
+            answer = inputTextBox.value.toString().toLowerCase().trim();
+
+        if (answer === correctAnswer.toLowerCase().trim()) {
+            populateResult.innerText = "Your answer is correct!";
+            score += 100;
+
+            questionsDataBase.splice(currentQuestionIndex, 1); // deleting asnwered question
+            submitButton.style.visibility = "hidden";
+            hintButton.style.visibility = "hidden";
+
+            playerModule.setShouldFreeze(false);
+        } else {
+            populateResult.innerText = "Your answer is incorrect!";
+            score -= 30;
+        }
+    }
+
+    function answerPenalty() {
+        let correctAnswer = questionsDataBase[currentQuestionIndex].answer,
+            populatePenaltyResult = document.getElementById("result");
+        score -= 300;
+        populatePenaltyResult.innerText = correctAnswer;
+        hintButton.style.visibility = "hidden";
+    }
 
 
-window.onload = function () {
-    populateQuestion();
-};
+    window.onload = function () {
+        submitButton.style.visibility = "hidden";
+        hintButton.style.visibility = "hidden";
+        inputTextBox.style.visibility = "hidden";
+    };
 
-submitButton.onclick = function () {
-    checkAnswer();
-};
+    submitButton.onclick = function () {
+        checkAnswer();
+    };
 
-hintButton.onclick = function () {
-    answerPenalty();
-};
+    hintButton.onclick = function () {
+        answerPenalty();
+    };
 
-
+    return {
+        populateQuestion: populateQuestion
+    }
+})();

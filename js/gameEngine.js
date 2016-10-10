@@ -49,9 +49,11 @@ let gameEngine = (function () {
             }
         }
 
-        if (indexToRemove !== -1) {
+        let playerCollidedQuestion = indexToRemove !== -1;
+        if (playerCollidedQuestion) {
             questions.splice(indexToRemove, 1);
-            playerModule.setQuestionIsActive(true);
+            playerModule.setShouldFreeze(true);
+            quizModule.populateQuestion();
         }
     }
 
@@ -68,4 +70,4 @@ $(function () {
     visualizationModule.initImages();
     playerModule.assignKeyHandlers();
     gameEngine.run();
-})
+});

@@ -1,8 +1,8 @@
-function generateQuestions(number, fromCoords, toCoords) {
+function generateQuestions(count, fromCoords, toCoords) {
     let questions = [],
         positionOffset = 40;
 
-    for (let index = 0; index < number; index += 1) {
+    for (let index = 0; index < count; index += 1) {
         let x, y;
         let questionCoordsOverlapExistingOne = false;
 
@@ -13,8 +13,8 @@ function generateQuestions(number, fromCoords, toCoords) {
             questionCoordsOverlapExistingOne = questions.some(q => q.x === x && q.y === y);
         } while (questionCoordsOverlapExistingOne)
 
-        let currentQuestion = {x: x, y: y};
-        questions.push(currentQuestion);
+        let currentQuestionHolder = {x: x, y: y};
+        questions.push(currentQuestionHolder);
     }
 
     return questions;
