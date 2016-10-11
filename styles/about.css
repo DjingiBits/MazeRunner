@@ -10,23 +10,6 @@ header{
     margin-top:0;
 }
 
-a{
-    text-decoration: none;
-    font: 24px 'Open Sans', sans-serif;
-    color: #b61924;
-    border: 5px dashed #b61924;
-    border-radius: 20px;
-    padding: 15px 60px;
-    margin-top: 20px;
-    text-align: center;
-}
-
-a:hover{
-    background: #b61924;
-    color: white;
-    border:  5px solid #b61924;
-    text-decoration: none;
-}
 .team-title,
 .process-title{
     font: 80px 'Sigmar One', cursiv;
@@ -96,3 +79,19 @@ a:hover{
     text-align: center;
 }
 
+.dislike-button{
+    text-decoration: none;
+    font: 24px 'Open Sans', sans-serif;
+    color: #b61924;
+    border: 5px dashed #b61924;
+    border-radius: 20px;
+    padding: 15px 60px;
+    margin-top: 20px;
+}
+
+.dislike-button:hover{
+    background: #b61924;
+    color: white;
+    border:  5px solid #b61924;
+    text-decoration: none;
+}
