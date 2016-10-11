@@ -62,12 +62,36 @@ window.quizModule = (function () {
         submitButton.style.visibility = "hidden";
         hintButton.style.visibility = "hidden";
 
+        let d0 = document.getElementById('d0'),
+            d1 = document.getElementById('d1'),
+            d2 = document.getElementById('d2'),
+            d3 = document.getElementById('d3'),
+            d4 = document.getElementById('d4');
+
         if (answer === correctAnswer.toLowerCase().trim()) {
             populateResult.innerText = "Your answer is correct!";
             populateResult.style.color="#A5DC86";
             score += 100;
-
             correctAnswersCount += 1;
+
+            switch(correctAnswersCount){
+                case 1:
+                    d0.style.color = '#6495ED';
+                    break;
+                case 2:
+                    d1.style.color = '#6495ED';
+                    break;
+                case 3:
+                    d2.style.color = '#6495ED';
+                    break;
+                case 4:
+                    d3.style.color = '#6495ED';
+                    break;
+                case 5:
+                    d4.style.color = '#6495ED';
+                    break;
+            }
+
             questionsDataBase.splice(currentQuestionIndex, 1); // deleting answered question
 
             playerModule.setShouldFreeze(false);

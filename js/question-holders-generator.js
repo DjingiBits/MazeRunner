@@ -11,7 +11,7 @@ function generateQuestions(count, fromCoords, toCoords) {
             y = getRandomCoordinateValue(fromCoords, toCoords) - positionOffset;
 
             questionCoordsOverlapExistingOne = questions.some(q => q.x === x && q.y === y);
-        } while (questionCoordsOverlapExistingOne)
+        } while (questionCoordsOverlapExistingOne);
 
         let currentQuestionHolder = {x: x, y: y};
         questions.push(currentQuestionHolder);

@@ -18,6 +18,10 @@ var id;
             gameOverNotification();
         } else {
             newElement.innerHTML = "Score: " + score.toString();
+            if(score <=10){
+                newElement.style.color="#d43030";
+                score.style.color="#d43030";
+            } 
         }
     }, 550);
 }
