@@ -14,7 +14,9 @@ let gameEngine = (function () {
         playerModule.drawPlayer();
         visualizationModule.renderObstacels(obstacles);
         visualizationModule.renderQuestions(questions);
-        checkForWinning();
+        if(checkForWinning()){
+            return;
+        }
         requestAnimationFrame(run);
     }
 
@@ -42,27 +44,8 @@ let gameEngine = (function () {
     function checkForWinning() {
         if (quizModule.getCorrectAnswersCount() >= 5) {
            youWinNotification();
-        }
-    }
-
-    function checkForWinning() {
-        if (quizModule.getCorrectAnswersCount() >= 5) {
-            swal(
-                {
-                    title: "You win!",
-                    text: "Your score: " + (score - 100),
-                    imageUrl: "../assets/img/congratulations.jpg",
-                    showCancelButton: true,
-                    cancelButtonText: "Cancel",
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "Play again"
-                }, function (isConfirm) {
-                    if (isConfirm) {
-                        location.reload();
-                    }
-                });
-
             clearInterval(id);
+            return true
         }
     }
 

@@ -1,3 +1,4 @@
+var playerName = "";
 function getPlayerName() {
     swal(
         {   title: "Hello!",
@@ -14,21 +15,24 @@ function getPlayerName() {
             if (inputValue === false)
                 return false;
             if (inputValue === "") {
-                inputValue = "anonymous";
+                playerName = "anonymous";
               }
+            else {
+                playerName = inputValue;
+            }
             swal({
-                title: "Hello, " + inputValue + "!",
+                title: "Hello, " + playerName + "!",
                 confirmButtonText: "Let's play",
                 confirmButtonColor: "#DD6B55"
             });
         });
-
+    return inpu
 }
 
 function gameOverNotification() {
     swal(
         {   title: "Game Over!",
-            text: "Next time be faster",
+            text: "Next time be faster, " + playerName,
             imageUrl: "../MazeRunner/assets/img/game-over.png" ,
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Play again"
@@ -45,11 +49,11 @@ function youWinNotification() {
     swal(
         {
             title: "You win!",
-            text: "Your score: " + (score - 100),
+            text: "" + playerName  + ", your score is: " + (score - 100),
             imageUrl: "../MazeRunner/assets/img/win.png",
             showCancelButton: true,
             cancelButtonText: "Cancel",
-            closeOnCancel: false,
+            closeOnCancel: true,
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Play again",
             closeOnConfirm: false,
