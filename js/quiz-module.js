@@ -4,7 +4,13 @@ window.quizModule = (function () {
         new Question('What is the largest number of five digits?', '99999', 1),
         new Question('In computing what is Ram short for?', 'Random Access Memory', 2),
         new Question('Which South American country is named after Venice?', 'Venezuela', 3),
-        new Question('What is both a French wine region and a luxury American automobile?', 'Cadillac', 4)
+        new Question('What is both a French wine region and a luxury American automobile?', 'Cadillac', 4),
+        new Question('Which is the financial centre and main city of Switzerland?', 'Zurich',5),
+        new Question('What is the third major Balearic Island with Majorca and Minorca?', 'Ibiza',6),
+        new Question('The llama belongs to the family of animals commonly called what? ', 'Camels',7),
+        new Question('Which US state is named on the label of a Jack Daniels bottle? ', 'Tennessee',8),
+        new Question("Which magical character emerged from Aladdin's lamp?", 'Genie', 9 ),
+        new Question('What is the capital city of Croatia?', 'Zagreb',10)
     ];    
 
     //Referencing

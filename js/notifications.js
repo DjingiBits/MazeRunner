@@ -46,11 +46,13 @@ function youWinNotification() {
         {
             title: "You win!",
             text: "Your score: " + (score - 100),
-            imageUrl: "../MazeRunner/assets/img/win.jpg",
+            imageUrl: "../MazeRunner/assets/img/win.png",
             showCancelButton: true,
             cancelButtonText: "Cancel",
+            closeOnCancel: false,
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Play again"
+            confirmButtonText: "Play again",
+            closeOnConfirm: false,
         }, function (isConfirm) {
             if (isConfirm) {
                 location.reload();
