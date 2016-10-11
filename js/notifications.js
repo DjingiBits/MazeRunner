@@ -23,13 +23,18 @@ function getPlayerName() {
             swal({
                 title: "Hello, " + playerName + "!",
                 confirmButtonText: "Let's play",
-                confirmButtonColor: "#DD6B55"
+                confirmButtonColor: "#DD6B55",
+                closeOnConfirm: true,
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    renderTimer();
+                }
             });
         });
-    return inpu
 }
 
 function gameOverNotification() {
+    renderGameOverText();
     swal(
         {   title: "Game Over!",
             text: "Next time be faster, " + playerName,
@@ -39,11 +44,12 @@ function gameOverNotification() {
         }, function(isConfirm)
         {
             if(isConfirm) {
-                location.reload();
+                location.reload(true);
             }
         });
     var audioLoss = new Audio('../MazeRunner/assets/win.mp3');
     audioLoss.play();
+    return checkRealoading;
 }
 function youWinNotification() {
     swal(
@@ -56,14 +62,14 @@ function youWinNotification() {
             closeOnCancel: true,
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Play again",
-            closeOnConfirm: false,
+            closeOnConfirm: false
         }, function (isConfirm) {
             if (isConfirm) {
+                checkRealoading = true;
                 location.reload();
             }
         });
     var audioWin = new Audio('../MazeRunner/assets/win.mp3');
     audioWin.play();
-
     clearInterval(id);
 }
