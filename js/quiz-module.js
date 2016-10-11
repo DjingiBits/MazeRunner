@@ -10,8 +10,12 @@ window.quizModule = (function () {
         new Question('The llama belongs to the family of animals commonly called what? ', 'Camels',7),
         new Question('Which US state is named on the label of a Jack Daniels bottle? ', 'Tennessee',8),
         new Question("Which magical character emerged from Aladdin's lamp?", 'Genie', 9 ),
-        new Question('What is the capital city of Croatia?', 'Zagreb',10)
-    ];    
+        new Question('What is the capital city of Croatia?', 'Zagreb',10),
+        new Question('If there are three apples and you took two away, how many do you have? (the answer is a digit)', '2',11),
+        new Question('Arabic numerals originated in which country?', 'India',12),
+        new Question('What kind of fish do grizzly bears like the most?', 'salmon',13),
+        new Question('What is the name of the pig character on the Looney Tunes logo?', 'Porky',14)
+    ];
 
     //Referencing
     let questionContent = document.getElementById('question-text'),
@@ -26,7 +30,6 @@ window.quizModule = (function () {
     //Rand question generator
     function getRandomQuestion() {
         let questionId = getRandomNumber(0, questionsDataBase.length - 1);
-        document.getElementById("question-picture").style.backgroundImage = `url("assets/img/${questionId}.jpg`;
         currentQuestionIndex = questionId;
         return questionsDataBase[questionId];
     }
@@ -35,6 +38,8 @@ window.quizModule = (function () {
     function populateQuestion() {
         let currentQuestion = getRandomQuestion();
         questionContent.innerText = currentQuestion.content;
+        document.getElementById("question-picture")
+            .style.backgroundImage = `url("assets/img/${currentQuestion.number}.jpg`;
         submitButton.style.visibility = "visible";
         hintButton.style.visibility = "visible";
         populateResult.innerText = "";
@@ -54,6 +59,9 @@ window.quizModule = (function () {
         let correctAnswer = questionsDataBase[currentQuestionIndex].answer,
             answer = inputTextBox.value.toString().toLowerCase().trim();
 
+        submitButton.style.visibility = "hidden";
+        hintButton.style.visibility = "hidden";
+
         if (answer === correctAnswer.toLowerCase().trim()) {
             populateResult.innerText = "Your answer is correct!";
             populateResult.style.color="#A5DC86";
@@ -61,8 +69,6 @@ window.quizModule = (function () {
 
             correctAnswersCount += 1;
             questionsDataBase.splice(currentQuestionIndex, 1); // deleting answered question
-            submitButton.style.visibility = "hidden";
-            hintButton.style.visibility = "hidden";
 
             playerModule.setShouldFreeze(false);
         } else {
