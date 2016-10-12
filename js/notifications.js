@@ -29,6 +29,7 @@ function getPlayerName() {
                 if (isConfirm) {
                     playerModule.setShouldFreeze(false);
                     renderTimer();
+                    disableScroll();
                 }
             });
         });
@@ -58,6 +59,7 @@ function gameOverNotification() {
             }
             else {
                 hideQuestionMode();
+                disableScroll();
             }
         });
 }
@@ -86,6 +88,7 @@ function youWinNotification() {
             }
             else {
                 hideQuestionMode();
+                disableScroll();
             }
         });
 
@@ -99,4 +102,8 @@ function hideQuestionMode() {
     document.getElementById("submitBtn").style.visibility = "hidden";
     document.getElementById("hintBtn").style.visibility = "hidden";
     document.getElementById("result").style.visibility = "hidden";
+}
+function disableScroll() {
+    document.documentElement.style.overflow = 'hidden';
+    document.body.scroll = "no";
 }
