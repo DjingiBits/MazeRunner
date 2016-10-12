@@ -27,6 +27,7 @@ function getPlayerName() {
                 closeOnConfirm: true,
             }, function (isConfirm) {
                 if (isConfirm) {
+                    playerModule.setShouldFreeze(false);
                     renderTimer();
                 }
             });
@@ -44,7 +45,12 @@ function gameOverNotification() {
         }, function(isConfirm)
         {
             if(isConfirm) {
-                location.reload(true);
+                gameEngine.initialize();
+                playerModule.setShouldFreeze(false);
+                renderTimer();
+                gameEngine.run();
+
+                // location.reload(true);
             }
         });
 }
@@ -60,10 +66,15 @@ function youWinNotification() {
             closeOnCancel: true,
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Play again",
-            closeOnConfirm: false
+            closeOnConfirm: true
         }, function (isConfirm) {
             if (isConfirm) {
-                location.reload(true);
+                gameEngine.initialize();
+                playerModule.setShouldFreeze(false);
+                renderTimer();
+                gameEngine.run();
+
+                // location.reload(true);
             }
         });
 

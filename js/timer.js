@@ -1,5 +1,6 @@
 function renderTimer() {
     var countdownTracker = document.getElementById("countdown-counter");
+    countdownTracker.style.color = "white";
     var id;
 
     id = setInterval(function () {
@@ -7,7 +8,7 @@ function renderTimer() {
             clearInterval(id);
             gameOverNotification();
         } else {
-            countdownTracker.innerHTML = "Score: " + score.toString();
+            countdownTracker.innerHTML = "Score: " + score;
             if (score <= 10) {
                 countdownTracker.style.color = "#d43030";
             }

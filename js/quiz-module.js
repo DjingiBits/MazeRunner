@@ -137,6 +137,7 @@ window.quizModule = (function () {
 
     return {
         populateQuestion: populateQuestion,
-        getCorrectAnswersCount: getCorrectAnswersCount
+        getCorrectAnswersCount: getCorrectAnswersCount,
+        resetCorrectAnswers: function() { correctAnswersCount = 0; }
     }
 })();

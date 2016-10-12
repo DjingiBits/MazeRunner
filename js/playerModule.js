@@ -1,6 +1,6 @@
 window.playerModule = (function () {
-  let positionX = 65;
-  let positionY = 65;
+  let positionX = HERO_DEFAULT_X;
+  let positionY = HERO_DEFAULT_Y;
   let speed = 25;
   let shouldFreeze = false;
 
@@ -77,5 +77,10 @@ window.playerModule = (function () {
     drawPlayer: drawPlayer,
     x: function() { return positionX; },
     y: function() { return positionY; },
-    setShouldFreeze: function(value) { shouldFreeze = value; }  };
+    setShouldFreeze: function(value) { shouldFreeze = value; },
+    resetPosition: function() {
+      positionX = HERO_DEFAULT_X;
+      positionY = HERO_DEFAULT_Y;
+    }
+  };
 })();

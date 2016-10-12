@@ -1,8 +1,22 @@
 let gameEngine = (function () {
-    let lastTimeObstaclesSwitched = new Date().getSeconds(),
-        visibleIndexes = obstaclesModule.getVisibleObstaclesIndexes(VISIBLE_OBSTACLES_COUNT, TOTAL_OBSTACLES_COUNT);
-    let obstacles = obstaclesModule.generateObstacles(TOTAL_OBSTACLES_COUNT, MAZE_START_COORDS, MAZE_END_COORDS);
-    let questions = generateQuestions(TOTAL_QUESTIONS_COUNT, MAZE_START_COORDS, MAZE_END_COORDS);
+    let lastTimeObstaclesSwitched,
+        visibleIndexes,
+        obstacles,
+        questions;
+
+    function initialize() {
+        playerModule.setShouldFreeze(true);
+        playerModule.resetPosition();
+        quizModule.resetCorrectAnswers();
+        score = 1000;
+
+        lastTimeObstaclesSwitched = new Date().getSeconds();
+        visibleIndexes = obstaclesModule
+            .getVisibleObstaclesIndexes(VISIBLE_OBSTACLES_COUNT, TOTAL_OBSTACLES_COUNT);
+        obstacles = obstaclesModule
+            .generateObstacles(TOTAL_OBSTACLES_COUNT, MAZE_START_COORDS, MAZE_END_COORDS);
+        questions = generateQuestions(TOTAL_QUESTIONS_COUNT, MAZE_START_COORDS, MAZE_END_COORDS);
+    }
 
     function run() {
         updateObstacles();
@@ -17,6 +31,7 @@ let gameEngine = (function () {
         if(checkForWinning()){
             return;
         }
+
         requestAnimationFrame(run);
     }
 
@@ -72,12 +87,15 @@ let gameEngine = (function () {
     }
 
     return {
-        run: run
+        run: run,
+        initialize: initialize
     }
 })();
 
 $(function () {
     visualizationModule.initImages();
     playerModule.assignKeyHandlers();
+
+    gameEngine.initialize();
     gameEngine.run();
 });
