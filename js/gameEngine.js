@@ -1,3 +1,10 @@
+//scroll on top everytime the page is refreshed
+window.onload = function() {
+    setTimeout(function() {
+        $(document.body).scrollTop(0);
+    }, 5);
+};
+
 let gameEngine = (function () {
     let lastTimeObstaclesSwitched,
         visibleIndexes,
@@ -28,10 +35,6 @@ let gameEngine = (function () {
         playerModule.drawPlayer();
         visualizationModule.renderObstacles(obstacles);
         visualizationModule.renderQuestions(questions);
-        if(checkForWinning()){
-            return;
-        }
-
         requestAnimationFrame(run);
     }
 
@@ -54,14 +57,6 @@ let gameEngine = (function () {
         }
 
         obstacles.forEach(o => o.update());
-    }
-
-    function checkForWinning() {
-        if (quizModule.getCorrectAnswersCount() >= 5) {
-           youWinNotification();
-            clearInterval(id);
-            return true
-        }
     }
 
     function updateQuestions() {

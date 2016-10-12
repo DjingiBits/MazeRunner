@@ -24,7 +24,7 @@ function getPlayerName() {
                 title: "Hello, " + playerName + "!",
                 confirmButtonText: "Let's play",
                 confirmButtonColor: "#DD6B55",
-                closeOnConfirm: true,
+                closeOnConfirm: true
             }, function (isConfirm) {
                 if (isConfirm) {
                     playerModule.setShouldFreeze(false);
@@ -62,6 +62,7 @@ function gameOverNotification() {
 }
 
 function youWinNotification() {
+    renderYouWinText();
     swal(
         {
             title: "You win!",
@@ -84,8 +85,6 @@ function youWinNotification() {
                 hideQuestionMode();
             }
         });
-
-    clearInterval(id);
 }
 
 function hideQuestionMode() {

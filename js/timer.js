@@ -13,7 +13,10 @@ function renderTimer() {
                 countdownTracker.style.color = "#d43030";
             }
         }
-
+        if(quizModule.getCorrectAnswersCount() >= 5){
+            clearInterval(id);
+            youWinNotification();
+        }
         score--;
     }, 550);
 }
@@ -21,4 +24,8 @@ function renderTimer() {
 function renderGameOverText() {
     var countdownTracker = document.getElementById("countdown-counter");
     countdownTracker.innerHTML = "Game Over";
+}
+function renderYouWinText() {
+    var countdownTracker = document.getElementById("countdown-counter");
+    countdownTracker.innerHTML = "You won";
 }
