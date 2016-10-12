@@ -7,7 +7,7 @@ let gameEngine = (function () {
     function initialize() {
         playerModule.setShouldFreeze(true);
         playerModule.resetPosition();
-        quizModule.resetCorrectAnswers();
+        quizModule.reset();
         score = 1000;
 
         lastTimeObstaclesSwitched = new Date().getSeconds();

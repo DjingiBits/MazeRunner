@@ -22,7 +22,14 @@ window.quizModule = (function () {
         submitButton = document.getElementById('submitBtn'),
         hintButton = document.getElementById('hintBtn'),
         populateResult = document.getElementById("result"),
-        inputTextBox = document.getElementById('answer-input');
+        inputTextBox = document.getElementById('answer-input'),
+        diamonds = [
+            document.getElementById('d0'),
+            document.getElementById('d1'),
+            document.getElementById('d2'),
+            document.getElementById('d3'),
+            document.getElementById('d4')
+        ];
 
     var correctAnswersCount = 0;
     var currentQuestionIndex = 0;
@@ -47,16 +54,6 @@ window.quizModule = (function () {
         inputTextBox.style.visibility = "visible";
     }
 
-    function clearQuestionField() {
-        questionContent.innerText = "";
-        document.getElementById("question-picture").style.backgroundImage = "none";
-        submitButton.style.visibility = "hidden";
-        hintButton.style.visibility = "hidden";
-        populateResult.innerText = "";
-        inputTextBox.value = "";
-        inputTextBox.style.visibility = "hidden";
-    }
-
     //Check answer
     function checkAnswer() {
         let gameIsOver = score <= 0;
@@ -72,37 +69,15 @@ window.quizModule = (function () {
         submitButton.style.visibility = "hidden";
         hintButton.style.visibility = "hidden";
 
-        let diamond0 = document.getElementById('d0'),
-            diamond1 = document.getElementById('d1'),
-            diamond2 = document.getElementById('d2'),
-            diamond3 = document.getElementById('d3'),
-            diamond4 = document.getElementById('d4');
-
         if (answer === correctAnswer.toLowerCase().trim()) {
             populateResult.innerText = "Your answer is correct!";
             populateResult.style.color="#A5DC86";
             score += 100;
+            diamonds[correctAnswersCount].style.color = '#6495ED';
             correctAnswersCount += 1;
 
-            switch(correctAnswersCount){
-                case 1:
-                    diamond0.style.color = '#6495ED';
-                    break;
-                case 2:
-                    diamond1.style.color = '#6495ED';
-                    break;
-                case 3:
-                    diamond2.style.color = '#6495ED';
-                    break;
-                case 4:
-                    diamond3.style.color = '#6495ED';
-                    break;
-                case 5:
-                    diamond4.style.color = '#6495ED';
-                    break;
-            }
-
-            questionsDataBase.splice(currentQuestionIndex, 1); // deleting answered question
+            // deleting answered question
+            questionsDataBase.splice(currentQuestionIndex, 1);
 
             playerModule.setShouldFreeze(false);
         } else {
@@ -112,6 +87,7 @@ window.quizModule = (function () {
             setTimeout(populateQuestion, 2000);
         }
     }
+
     function answerPenalty() {
         let correctAnswer = questionsDataBase[currentQuestionIndex].answer,
             populatePenaltyResult = document.getElementById("result");
@@ -124,6 +100,19 @@ window.quizModule = (function () {
         return correctAnswersCount;
     }
 
+    function clearQuestionField() {
+        questionContent.innerText = "";
+        document.getElementById("question-picture").style.backgroundImage = "none";
+        submitButton.style.visibility = "hidden";
+        hintButton.style.visibility = "hidden";
+        populateResult.innerText = "";
+        inputTextBox.value = "";
+        inputTextBox.style.visibility = "hidden";
+    }
+
+    function clearDiamonds() {
+        diamonds.forEach(d => d.style.color = "#565656");
+    }
 
     window.onload = function () {
         submitButton.style.visibility = "hidden";
@@ -155,7 +144,10 @@ window.quizModule = (function () {
     return {
         populateQuestion: populateQuestion,
         getCorrectAnswersCount: getCorrectAnswersCount,
-        resetCorrectAnswers: function() { correctAnswersCount = 0; },
-        clearQuestionField: clearQuestionField
+        reset: function () {
+            correctAnswersCount = 0;
+            clearQuestionField();
+            clearDiamonds();
+        }
     }
 })();
