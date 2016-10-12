@@ -40,6 +40,9 @@ function gameOverNotification() {
         {   title: "Game Over!",
             text: "Next time be faster, " + playerName,
             imageUrl: "../MazeRunner/assets/img/game-over.png" ,
+            showCancelButton: true,
+            cancelButtonText: "Cancel",
+            closeOnCancel: true,
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Play again"
         }, function(isConfirm)
@@ -51,6 +54,9 @@ function gameOverNotification() {
                 gameEngine.run();
 
                 // location.reload(true);
+            }
+            else {
+                hideQuestionMode();
             }
         });
 }
@@ -76,7 +82,19 @@ function youWinNotification() {
 
                 // location.reload(true);
             }
+            else {
+                hideQuestionMode();
+            }
         });
 
     clearInterval(id);
+}
+function hideQuestionMode() {
+    document.getElementById("question-heading").style.visibility = "hidden";
+    document.getElementById("question-picture").style.visibility = "hidden";
+    document.getElementById("question-text").style.visibility = "hidden";
+    document.getElementById("answer-input").style.visibility = "hidden";
+    document.getElementById("submitBtn").style.visibility = "hidden";
+    document.getElementById("hintBtn").style.visibility = "hidden";
+    document.getElementById("result").style.visibility = "hidden";
 }

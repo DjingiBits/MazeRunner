@@ -57,7 +57,7 @@ window.quizModule = (function () {
         }
 
         let correctAnswer = questionsDataBase[currentQuestionIndex].answer,
-            answer = inputTextBox.value.toString().toLowerCase().trim();
+            answer = htmlEscaping(inputTextBox.value.toString().toLowerCase().trim());
 
         submitButton.style.visibility = "hidden";
         hintButton.style.visibility = "hidden";
@@ -134,6 +134,13 @@ window.quizModule = (function () {
     hintButton.onclick = function () {
         answerPenalty();
     };
+
+    function htmlEscaping(text) {
+        text = text.toString();
+        let map = { '"': '&quot;', '&': '&amp;',
+            "'": '&#39;', '<': '&lt;', '>': '&gt;' };
+        return text.replace(/[\"&'<>]/g, ch => map[ch]);
+    }
 
     return {
         populateQuestion: populateQuestion,
