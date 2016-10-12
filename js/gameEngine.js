@@ -12,7 +12,7 @@ let gameEngine = (function () {
 
         visualizationModule.renderMaze();
         playerModule.drawPlayer();
-        visualizationModule.renderObstacels(obstacles);
+        visualizationModule.renderObstacles(obstacles);
         visualizationModule.renderQuestions(questions);
         if(checkForWinning()){
             return;

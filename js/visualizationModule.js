@@ -56,7 +56,7 @@ window.visualizationModule = (function () {
     renderMaze: renderMaze,
     renderPlayer: renderPlayer,
     renderQuestions: renderQuestions,
-    renderObstacels: renderObstacles,
+    renderObstacles: renderObstacles,
     clearMaze: clearMaze,
     context: context
   }

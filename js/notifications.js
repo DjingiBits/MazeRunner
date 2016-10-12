@@ -47,10 +47,8 @@ function gameOverNotification() {
                 location.reload(true);
             }
         });
-    var audioLoss = new Audio('../MazeRunner/assets/win.mp3');
-    audioLoss.play();
-    return checkRealoading;
 }
+
 function youWinNotification() {
     swal(
         {
@@ -65,11 +63,9 @@ function youWinNotification() {
             closeOnConfirm: false
         }, function (isConfirm) {
             if (isConfirm) {
-                checkRealoading = true;
-                location.reload();
+                location.reload(true);
             }
         });
-    var audioWin = new Audio('../MazeRunner/assets/win.mp3');
-    audioWin.play();
+
     clearInterval(id);
 }
