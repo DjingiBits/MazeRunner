@@ -5,11 +5,6 @@
     padding:0;
 }
 
-header{
-    background: #eaeaea no-repeat center center;
-    margin-top:0;
-}
-
 .team-title,
 .process-title{
     font: 80px 'Sigmar One', cursiv;
@@ -33,6 +28,7 @@ header{
 
 .team-members{
     display: inline-block !important;
+    margin-left: 100px;
  }
 
 .member,
@@ -46,12 +42,38 @@ header{
     max-height: 200px;
     width: 100%;
     height: 100%;
+    margin: 20px;
     border-radius: 50%;
+    -webkit-filter: grayscale(100%);
+    -webkit-transition: .5s ease-in-out;
+    -moz-filter: grayscale(100%);
+    -moz-transition: .5s ease-in-out;
+    -o-filter: grayscale(100%);
+    -o-transition: .5s ease-in-out;
+}
+
+.person-avatar:hover{
+    cursor: pointer;
+    -webkit-filter: grayscale(0%);
+    -webkit-transition: .5s ease-in-out;
+    -moz-filter: grayscale(0%);
+    -moz-transition: .5s ease-in-out;
+    -o-filter: grayscale(0%);
+    -o-transition: .5s ease-in-out;
 }
 
 .person-name,
 .day-title{
     font: 16px 'Open Sans', sans-serif;
+    text-align: center;
+}
+
+.locations{
+    max-width: 900px;
+    max-height: 550px;
+    width:100%;
+    height: 100%;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -65,7 +87,7 @@ header{
 
 .dislike-title{
     font: 34px 'Sigmar One', cursiv;
-    color: black;
+    color: #b61924;
     text-align: center;
     padding-top: 80px;
 }
@@ -78,20 +100,49 @@ header{
 
     text-align: center;
 }
+.dislike-Jelev-box{
+    background: #B7004E;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 
-.dislike-button{
+.dislike-button {
+    background: none;
     text-decoration: none;
     font: 24px 'Open Sans', sans-serif;
-    color: #b61924;
     border: 5px dashed #b61924;
     border-radius: 20px;
     padding: 15px 60px;
     margin-top: 20px;
+    color: #b61924;
+}
+
+.dislike-button > a{
+    color: #b61924;
+    text-align: center;
+    text-decoration: none;
 }
 
 .dislike-button:hover{
     background: #b61924;
-    color: white;
     border:  5px solid #b61924;
     text-decoration: none;
+    color: white;
+}
+
+.dislike-button >a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+
+#canvas-hearts{
+    position: absolute;
+}
+
+.content-jelev{
+    position: absolute;
+    z-index: 99999;
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="./styles/about.css">
 </head>
 <body>
-<div class="wrapper">
 <nav class="navbar navbar-inverse navbar-static-top navbar-static-top">
     <div class="container-fluid ">
         <div class="navbar-header ">
@@ -50,7 +49,7 @@
     <h1 class="team-title">Djingi Bits</h1>
     <h3 class="team-subtitle">*The Team*</h3>
 
-    <ul class="team-members">
+    <ul class="team-members list-inline">
         <li class="member">
             <img src="./assets/img/iliyan.png" alt="Iliyan Vangelov" class="person-avatar">
             <h2 class="person-name">Iliyan Vangelov</h2>
@@ -70,34 +69,40 @@
         </li>
     </ul>
 
+    <img src="./assets/img/sofldn.png" alt="Team Locations" class="locations center-block">
 </header>
 
-<body>
-<h1 class="process-title">The process</h1>
-<ul class="process-images">
-    <li class="single-day">
-        <h3 class="day-title">Day One</h3>
-        <img class="day-meme" src="assets/img/firstday.png" alt="First day meme">
-    </li>
-    <li class="single-day">
-        <h3 class="day-title">Day Two</h3>
-        <img class="day-meme" src="assets/img/thirdday.png" alt="Second day meme">
-    </li>
-    <li class="single-day">
-        <h3 class="day-title">Day Three</h3>
-        <img class="day-meme" src="assets/img/secondday.png" alt="Third day meme">
-    </li>
-    <li class="single-day">
-        <h3 class="day-title">Day Four</h3>
-        <img class="day-meme" src="assets/img/fourthday.png" alt="Fourth day meme">
-    </li>
-</ul>
+<main>
+    <h1 class="process-title">The process</h1>
+    <ul class="process-images">
+        <li class="single-day">
+            <h3 class="day-title">Day One</h3>
+            <img class="day-meme" src="assets/img/firstday.png" alt="First day meme">
+        </li>
+        <li class="single-day">
+            <h3 class="day-title">Day Two</h3>
+            <img class="day-meme" src="assets/img/thirdday.png" alt="Second day meme">
+        </li>
+        <li class="single-day">
+            <h3 class="day-title">Day Three</h3>
+            <img class="day-meme" src="assets/img/secondday.png" alt="Third day meme">
+        </li>
+        <li class="single-day">
+            <h3 class="day-title">Day Four</h3>
+            <img class="day-meme" src="assets/img/fourthday.png" alt="Fourth day meme">
+        </li>
+    </ul>
 
-<div class="dislike-Jelev-box">
-    <h1 class="dislike-title">If you liked our project, please support us by giving this video a thumbs down (:</h1>
-    <h5 class="dislike-subtitle">PS: We love you, Жельо </h5>
-    <a class="dislike-button" href="https://www.youtube.com/watch?v=CqtjQti1jaE">Click here</a>
-</div>
-</div>
+    <div class="dislike-Jelev-box">
+        <canvas id="canvas-hearts">
+        </canvas>
+        <div class="content-jelev text-center">
+            <h1 class="dislike-title">If you liked our project, please support us by giving this video a thumbs down (:</h1>
+            <h5 class="dislike-subtitle">PS: We love you, Жельо </h5>
+            <a href="https://www.youtube.com/watch?v=CqtjQti1jaE"><button class="btn center dislike-button">Click here</button></a>
+        </div>
+    </div>
+</main>
+<script type="text/javascript" src="./js/fallingHearts.js"></script>
 </body>
 </html>
