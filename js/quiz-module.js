@@ -125,6 +125,12 @@ window.quizModule = (function () {
         checkAnswer();
     };
 
+    $(document).keypress(function(e) {
+        if(e.which == 13) {
+            checkAnswer();
+        }
+    });
+
     hintButton.onclick = function () {
         answerPenalty();
     };
