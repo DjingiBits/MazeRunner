@@ -48,6 +48,7 @@ function gameOverNotification() {
         }, function(isConfirm)
         {
             if(isConfirm) {
+                quizModule.clearQuestionField();
                 gameEngine.initialize();
                 playerModule.setShouldFreeze(false);
                 renderTimer();
@@ -75,6 +76,7 @@ function youWinNotification() {
             closeOnConfirm: true
         }, function (isConfirm) {
             if (isConfirm) {
+                quizModule.clearQuestionField();
                 gameEngine.initialize();
                 playerModule.setShouldFreeze(false);
                 renderTimer();

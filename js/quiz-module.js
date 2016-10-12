@@ -47,6 +47,16 @@ window.quizModule = (function () {
         inputTextBox.style.visibility = "visible";
     }
 
+    function clearQuestionField() {
+        questionContent.innerText = "";
+        document.getElementById("question-picture").style.backgroundImage = "none";
+        submitButton.style.visibility = "hidden";
+        hintButton.style.visibility = "hidden";
+        populateResult.innerText = "";
+        inputTextBox.value = "";
+        inputTextBox.style.visibility = "hidden";
+    }
+
     //Check answer
     function checkAnswer() {
         let gameIsOver = score <= 0;
@@ -62,11 +72,11 @@ window.quizModule = (function () {
         submitButton.style.visibility = "hidden";
         hintButton.style.visibility = "hidden";
 
-        let d0 = document.getElementById('d0'),
-            d1 = document.getElementById('d1'),
-            d2 = document.getElementById('d2'),
-            d3 = document.getElementById('d3'),
-            d4 = document.getElementById('d4');
+        let diamond0 = document.getElementById('d0'),
+            diamond1 = document.getElementById('d1'),
+            diamond2 = document.getElementById('d2'),
+            diamond3 = document.getElementById('d3'),
+            diamond4 = document.getElementById('d4');
 
         if (answer === correctAnswer.toLowerCase().trim()) {
             populateResult.innerText = "Your answer is correct!";
@@ -76,19 +86,19 @@ window.quizModule = (function () {
 
             switch(correctAnswersCount){
                 case 1:
-                    d0.style.color = '#6495ED';
+                    diamond0.style.color = '#6495ED';
                     break;
                 case 2:
-                    d1.style.color = '#6495ED';
+                    diamond1.style.color = '#6495ED';
                     break;
                 case 3:
-                    d2.style.color = '#6495ED';
+                    diamond2.style.color = '#6495ED';
                     break;
                 case 4:
-                    d3.style.color = '#6495ED';
+                    diamond3.style.color = '#6495ED';
                     break;
                 case 5:
-                    d4.style.color = '#6495ED';
+                    diamond4.style.color = '#6495ED';
                     break;
             }
 
@@ -145,6 +155,7 @@ window.quizModule = (function () {
     return {
         populateQuestion: populateQuestion,
         getCorrectAnswersCount: getCorrectAnswersCount,
-        resetCorrectAnswers: function() { correctAnswersCount = 0; }
+        resetCorrectAnswers: function() { correctAnswersCount = 0; },
+        clearQuestionField: clearQuestionField
     }
 })();
