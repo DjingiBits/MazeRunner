@@ -29,7 +29,6 @@ function getPlayerName() {
                 if (isConfirm) {
                     playerModule.setShouldFreeze(false);
                     renderTimer();
-                    disableScroll();
                 }
             });
 
@@ -55,12 +54,9 @@ function gameOverNotification() {
                 playerModule.setShouldFreeze(false);
                 renderTimer();
                 gameEngine.run();
-
-                // location.reload(true);
             }
             else {
                 hideQuestionMode();
-                disableScroll();
             }
         });
 }
@@ -83,17 +79,15 @@ function youWinNotification() {
                 playerModule.setShouldFreeze(false);
                 renderTimer();
                 gameEngine.run();
-
-                // location.reload(true);
             }
             else {
                 hideQuestionMode();
-                disableScroll();
             }
         });
 
     clearInterval(id);
 }
+
 function hideQuestionMode() {
     document.getElementById("question-heading").style.visibility = "hidden";
     document.getElementById("question-picture").style.visibility = "hidden";
@@ -102,8 +96,4 @@ function hideQuestionMode() {
     document.getElementById("submitBtn").style.visibility = "hidden";
     document.getElementById("hintBtn").style.visibility = "hidden";
     document.getElementById("result").style.visibility = "hidden";
-}
-function disableScroll() {
-    document.documentElement.style.overflow = 'hidden';
-    document.body.scroll = "no";
 }
