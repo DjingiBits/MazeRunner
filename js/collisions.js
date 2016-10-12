@@ -1,5 +1,5 @@
 function checkWallHit(x, y, width, height, direction) {
-    return false;
+
     let offset = 7,
         heroLeft = x - offset,
         heroRight = x + width + offset,
