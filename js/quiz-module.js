@@ -46,7 +46,7 @@ window.quizModule = (function () {
         inputTextBox.value = "";
         inputTextBox.style.visibility = "visible";
     }
-    
+
     //Check answer
     function checkAnswer() {
         let gameIsOver = score <= 0;
